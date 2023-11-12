@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutorial</title>
+    <link rel="styleSheet" href="syles.css">
+</head>
+<body>
+    
+<script>
+    // Function to simulate console-like output with delays
+    function printWithDelay(text, delay) {
+        setTimeout(function () {
+            document.write(text + '<br>');
+        }, delay);
+    }
+
+    // Simulate the tutorial steps with delays
+    printWithDelay("hello user", 0);
+    printWithDelay("this is a tutorial for python", 2000);
+    printWithDelay("you can see that now the page is looking different than my first tutorial", 4000);
+    printWithDelay("that's because I am new to python and I wanted to code it in py", 6000);
+    printWithDelay("let's begin with writing something in the console", 8000);
+    printWithDelay("to do that you have to use            print(<put text here>)", 10000);
+    printWithDelay("so it's really easy", 14000);
+    printWithDelay("Next are variables. They are easy here", 18000);
+    printWithDelay("just write \n<name_of_the_variable> = <data>", 23000);
+    printWithDelay("for text data it's something like\n variable = \"text\"", 28000);
+    printWithDelay("and for number value it's \nvariable = 10", 33000);
+    printWithDelay("to write a variable inside print, you just have to write \nprint (variable)", 38000);
+    printWithDelay("to do maths with variables you can do\n a=10\n b=2\n c=a+b\n print(c)", 46000);
+    printWithDelay("so it's easy", 47000);
+    printWithDelay("to check what user wrote you can use INPUT command", 50000);
+    printWithDelay("next is how to print a variable and text in the same lane", 53000);
+    printWithDelay("just write                    print (\"text\" + variable)", 58000);
+    printWithDelay("So now you know the basics", 60000);
+    printWithDelay("try to make a calculator that only adds up 2 numbers, but the user can choose the numbers", 65000);
+
+    // Simulate user interaction (clicking a button to show the answer)
+    function showAnswer() {
+        printWithDelay("if you are ready, click any button to get the answer", 67000);
+        setTimeout(function () {
+        document.write('<button onclick="getAnswer()">Get Answer</button>');
+    }, 70000);
+    }
+
+    function getAnswer() {
+        printWithDelay("the answer is", 0);
+        printWithDelay("a = prompt('choose the first number')", 1000);
+        printWithDelay("b = prompt('choose the second number')", 2000);
+        printWithDelay("c = parseInt(a) + parseInt(b)", 3000);
+        printWithDelay("alert('the answer is ' + c)", 4000);
+        printWithDelay("hope I helped and bye", 10000);
+    }
+
+    // Simulate waiting for user interaction
+    setTimeout(showAnswer, 8000);
+</script>
+
+</body>
+</html>
