@@ -131,7 +131,8 @@
 
 .btn:hover {
     background-color: #0056b3;
-}`;
+}` + text.substring(endPos);
+
             var newText = text.substring(0, startPos - 7) + newCSS + text.substring(endPos);
             textarea.value = newText;
           } else if (trigger === 'abt') {
