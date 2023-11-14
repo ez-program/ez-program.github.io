@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Coder</title>
+  <style>
+        body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    #editor-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #codeEditor {
+      width: 80%;
+      height: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      resize: none;
+    }
+
+    #downloadButton {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    h1 {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Easy to use html editor</h1>
+
+  <p>Made by Jakub Wolak<p>
+  <div id="editor-container">
+    <textarea id="codeEditor" placeholder="Type your code over here! "></textarea>
+  </div>
+
+  <button id="downloadButton">Download HTML</button>
+
+  <script>
+    let tabPressed = false;
+
+    document.getElementById('codeEditor').addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        tabPressed = true;
+        var textarea = e.target;
+        var startPos = textarea.selectionStart;
+        var endPos = textarea.selectionEnd;
+        var text = textarea.value;
+
+        if (startPos === endPos) {
+          var newText = text.substring(0, startPos) + '     ' + text.substring(endPos);
+          textarea.value = newText;
+          textarea.setSelectionRange(startPos + 5, startPos + 5);
+        } else {
+          var lines = text.substring(startPos, endPos).split('\n');
+          var updatedLines = lines.map(line => '     ' + line); 
+          var updatedText = text.substring(0, startPos) + updatedLines.join('\n') + text.substring(endPos); 
+          textarea.value = updatedText; 
+          textarea.setSelectionRange(startPos, endPos + (5 * lines.length)); 
+        }
+      }
+    });
+
+    document.getElementById('codeEditor').addEventListener('keyup', function(e) {
+      if (e.key === 'Tab') {
+        tabPressed = false;
+      }
+    });
+
+    document.getElementById('codeEditor').addEventListener('input', function(e) {
+      var text = e.target.value;
+      var startPos = e.target.selectionStart;
+      var inputText = text.substring(startPos - 6, startPos);
+      
+      if (!tabPressed && (inputText === 'bstyle' || inputText === 'doc' || inputText === 'abt' || inputText === '<h1>' || inputText === '<p>')) {
+        var textarea = e.target;
+        var endPos = textarea.selectionEnd;
+        
+        if (inputText === 'doc') {
+          var newText = text.substring(0, startPos - 3) + `<!DOCTYPE html>
+                        <html>
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Document</title>
+                        </head>
+                        <body>
+                            
+                        </body>
+                        </html>` + text.substring(endPos);
+          textarea.value = newText;
+        } else if (inputText === 'bstyle') {
+          var newCSS = `/* Button Style */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}`;
+          var newText = text.substring(0, startPos - 6) + newCSS + text.substring(endPos);
+          textarea.value = newText;
+        } else if (inputText === 'abt') {
+          var newTag = `<a href="#" class="btn">Link Text</a>`;
+          var newText = text.substring(0, startPos - 3) + newTag + text.substring(endPos);
+          textarea.value = newText;
+        } else if (inputText === '<h1>') {
+          var newText = text.substring(0, startPos) + '</h1>' + text.substring(endPos);
+          textarea.value = newText;
+          textarea.setSelectionRange(startPos, startPos);
+        } else if (inputText === '<p>') {
+          var newText = text.substring(0, startPos) + '</p>' + text.substring(endPos);
+          textarea.value = newText;
+          textarea.setSelectionRange(startPos, startPos);
+        }
+      }
+    });
+
+    document.getElementById('downloadButton').addEventListener('click', function() {
+      var codeContent = document.getElementById('codeEditor').value;
+      var blob = new Blob([codeContent], { type: 'text/html' });
+      var url = URL.createObjectURL(blob);
+
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'your_code.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  </script>
+</body>
+</html>
