@@ -47,11 +47,12 @@
   </style>
 </head>
 <body>
-  <h1>Easy to use html editor</h1>
+  <h1>better HTML CODER</h1>
+  
+  <p>made by Jakub Wolak<p>
 
-  <p>Made by Jakub Wolak<p>
   <div id="editor-container">
-    <textarea id="codeEditor" placeholder="Type your code over here! "></textarea>
+    <textarea id="codeEditor" placeholder="write your code here"></textarea>
   </div>
 
   <button id="downloadButton">Download HTML</button>
@@ -74,10 +75,10 @@
           textarea.setSelectionRange(startPos + 5, startPos + 5);
         } else {
           var lines = text.substring(startPos, endPos).split('\n');
-          var updatedLines = lines.map(line => '     ' + line); 
-          var updatedText = text.substring(0, startPos) + updatedLines.join('\n') + text.substring(endPos); 
-          textarea.value = updatedText; 
-          textarea.setSelectionRange(startPos, endPos + (5 * lines.length)); 
+          var updatedLines = lines.map(line => '     ' + line);
+          var updatedText = text.substring(0, startPos) + updatedLines.join('\n') + text.substring(endPos);
+          textarea.value = updatedText;
+          textarea.setSelectionRange(startPos, endPos + (5 * lines.length));
         }
       }
     });
@@ -93,12 +94,15 @@
       var startPos = e.target.selectionStart;
       var inputText = text.substring(startPos - 6, startPos);
       
-      if (!tabPressed && (inputText === 'bstyle' || inputText === 'doc' || inputText === 'abt' || inputText === '<h1>' || inputText === '<p>')) {
+      if (!tabPressed) {
         var textarea = e.target;
         var endPos = textarea.selectionEnd;
         
-        if (inputText === 'doc') {
-          var newText = text.substring(0, startPos - 3) + `<!DOCTYPE html>
+        if (inputText.endsWith('doc') || inputText.endsWith('bstyle') || inputText.endsWith('abt') || inputText.endsWith('<h1>') || inputText.endsWith('<p>')) {
+          var trigger = inputText.trim();
+
+          if (trigger === 'doc') {
+            var newText = text.substring(0, startPos - 3) + `<!DOCTYPE html>
                         <html>
                         <head>
                             <meta charset="UTF-8">
@@ -109,9 +113,9 @@
                             
                         </body>
                         </html>` + text.substring(endPos);
-          textarea.value = newText;
-        } else if (inputText === 'bstyle') {
-          var newCSS = `/* Button Style */
+            textarea.value = newText;
+          } else if (trigger === 'bstyle') {
+            var newCSS = `/* Button Style */
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -128,20 +132,21 @@
 .btn:hover {
     background-color: #0056b3;
 }`;
-          var newText = text.substring(0, startPos - 6) + newCSS + text.substring(endPos);
-          textarea.value = newText;
-        } else if (inputText === 'abt') {
-          var newTag = `<a href="#" class="btn">Link Text</a>`;
-          var newText = text.substring(0, startPos - 3) + newTag + text.substring(endPos);
-          textarea.value = newText;
-        } else if (inputText === '<h1>') {
-          var newText = text.substring(0, startPos) + '</h1>' + text.substring(endPos);
-          textarea.value = newText;
-          textarea.setSelectionRange(startPos, startPos);
-        } else if (inputText === '<p>') {
-          var newText = text.substring(0, startPos) + '</p>' + text.substring(endPos);
-          textarea.value = newText;
-          textarea.setSelectionRange(startPos, startPos);
+            var newText = text.substring(0, startPos - 7) + newCSS + text.substring(endPos);
+            textarea.value = newText;
+          } else if (trigger === 'abt') {
+            var newTag = `<a href="#" class="btn">Link Text</a>`;
+            var newText = text.substring(0, startPos - 3) + newTag + text.substring(endPos);
+            textarea.value = newText;
+          } else if (trigger === '<h1>') {
+            var newText = text.substring(0, startPos) + '</h1>' + text.substring(endPos);
+            textarea.value = newText;
+            textarea.setSelectionRange(startPos, startPos);
+          } else if (trigger === '<p>') {
+            var newText = text.substring(0, startPos) + '</p>' + text.substring(endPos);
+            textarea.value = newText;
+            textarea.setSelectionRange(startPos, startPos);
+          }
         }
       }
     });
