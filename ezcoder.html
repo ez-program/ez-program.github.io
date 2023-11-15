@@ -98,7 +98,7 @@
         var textarea = e.target;
         var endPos = textarea.selectionEnd;
         
-        if (inputText.endsWith('doc') || inputText.endsWith('bstyle') || inputText.endsWith('abt') || inputText.endsWith('<h1>') || inputText.endsWith('<p>')) {
+        if (inputText.endsWith('doc') || inputText.endsWith('bstyle') || inputText.endsWith('allignstyle') || inputText.endsWith('condiv')|| inputText.endsWith('abt') || inputText.endsWith('<h1>') || inputText.endsWith('<p>')) {
           var trigger = inputText.trim();
 
           if (trigger === 'doc') {
