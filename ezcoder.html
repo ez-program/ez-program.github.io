@@ -114,6 +114,75 @@
                         </body>
                         </html>` + text.substring(endPos);
             textarea.value = newText;
+          } else if (trigger === 'allignstyle') {
+            var newCSS = `.coc {
+  position: absolute;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.tlc {
+  top: 0;
+  left: 0;
+}
+
+.trc {
+  top: 0;
+  right: 0;
+}
+
+.blc {
+  bottom: 0;
+  left: 0;
+}
+
+.brc {
+  bottom: 0;
+  right: 0;
+}
+
+.cc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  box-sizing: border-box;
+}
+.ec {
+  position: absolute;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.te {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.be {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.le {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.re {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}` + text.substring(endPos);
+          } else if (trigger === 'condiv') {
+            var newCSS = `<div class="coc tlc">
+  <h1>Heading 1</h1>
+  <p>Paragraph 1</p>
+</div>` + text.substring(endPos);
           } else if (trigger === 'bstyle') {
             var newCSS = `<style>
   .btn {
