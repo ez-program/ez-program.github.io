@@ -47,12 +47,12 @@
   </style>
 </head>
 <body>
-  <h1>better HTML CODER</h1>
-  
-  <p>made by Jakub Wolak<p>
+  <h1>html coder better than notepad</h1>
+
+  <p>made by Jakub Wolak</p>
 
   <div id="editor-container">
-    <textarea id="codeEditor" placeholder="write your code here. use doc for doctype. h1 and p autofinish"></textarea>
+    <textarea id="codeEditor" placeholder="write yor code here. <h1> and <p> auto finish"></textarea>
   </div>
 
   <button id="downloadButton">Download HTML</button>
@@ -70,15 +70,17 @@
         var text = textarea.value;
 
         if (startPos === endPos) {
+          // If there is no selection, add 5 tabs at the cursor position
           var newText = text.substring(0, startPos) + '     ' + text.substring(endPos);
           textarea.value = newText;
-          textarea.setSelectionRange(startPos + 5, startPos + 5);
+          textarea.setSelectionRange(startPos + 5, startPos + 5); // Move cursor forward by 5 spaces
         } else {
-          var lines = text.substring(startPos, endPos).split('\n');
-          var updatedLines = lines.map(line => '     ' + line);
-          var updatedText = text.substring(0, startPos) + updatedLines.join('\n') + text.substring(endPos);
-          textarea.value = updatedText;
-          textarea.setSelectionRange(startPos, endPos + (5 * lines.length));
+          // If there is a selection, indent the selected lines
+          var lines = text.substring(startPos, endPos).split('\n'); // Get selected lines
+          var updatedLines = lines.map(line => '     ' + line); // Indent selected lines
+          var updatedText = text.substring(0, startPos) + updatedLines.join('\n') + text.substring(endPos); // Update text with indented lines
+          textarea.value = updatedText; // Update the textarea content
+          textarea.setSelectionRange(startPos, endPos + (5 * lines.length)); // Adjust selection range by indentation
         }
       }
     });
@@ -92,13 +94,13 @@
     document.getElementById('codeEditor').addEventListener('input', function(e) {
       var text = e.target.value;
       var startPos = e.target.selectionStart;
-      var inputText = text.substring(startPos - 6, startPos);
+      var inputText = text.substring(startPos - 14, startPos);
       
       if (!tabPressed) {
         var textarea = e.target;
         var endPos = textarea.selectionEnd;
         
-        if (inputText.endsWith('doc') || inputText.endsWith('bstyle') || inputText.endsWith('allignstyle') || inputText.endsWith('condiv')|| inputText.endsWith('abt') || inputText.endsWith('<h1>') || inputText.endsWith('<p>')) {
+        if (inputText.endsWith('doc') || inputText.endsWith('bstyle') || inputText.endsWith('abt') || inputText.endsWith('allignstyle') || inputText.endsWith('condiv') || inputText.endsWith('<h1>') || inputText.endsWith('<p>')) {
           var trigger = inputText.trim();
 
           if (trigger === 'doc') {
@@ -114,8 +116,32 @@
                         </body>
                         </html>` + text.substring(endPos);
             textarea.value = newText;
+          } else if (trigger === 'bstyle') {
+            var newCSS = `/* Button Style */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}`;
+            var newText = text.substring(0, startPos - 7) + newCSS + text.substring(endPos);
+            textarea.value = newText;
+          } else if (trigger === 'abt') {
+            var newTag = `<a href="#" class="btn">Link Text</a>`;
+            var newText = text.substring(0, startPos - 3) + newTag + text.substring(endPos);
+            textarea.value = newText;
           } else if (trigger === 'allignstyle') {
-            var newCSS = `.coc {
+            var newCSS = `.cc {
   position: absolute;
   padding: 20px;
   box-sizing: border-box;
@@ -141,7 +167,7 @@
   right: 0;
 }
 
-.cc {
+.cec {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -149,6 +175,7 @@
   padding: 20px;
   box-sizing: border-box;
 }
+
 .ec {
   position: absolute;
   padding: 20px;
@@ -177,37 +204,15 @@
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-}` + text.substring(endPos);
+}`;
+            var newText = text.substring(0, startPos - 14) + newCSS + text.substring(endPos);
+            textarea.value = newText;
           } else if (trigger === 'condiv') {
-            var newCSS = `<div class="coc tlc">
+            var newHTML = `<div class="cc tlc">
   <h1>Heading 1</h1>
   <p>Paragraph 1</p>
-</div>` + text.substring(endPos);
-          } else if (trigger === 'bstyle') {
-            var newCSS = `<style>
-  .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: bold;
-      text-align: center;
-      text-decoration: none;
-      background-color: #007bff;
-      color: #ffffff;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-  }
-
-  .btn:hover {
-      background-color: #0056b3;
-  }
-</style>` + text.substring(endPos);
-
-            var newText = text.substring(0, startPos - 7) + newCSS + text.substring(endPos);
-            textarea.value = newText;
-          } else if (trigger === 'abt') {
-            var newTag = `<a href="#" class="btn">Link Text</a>`;
-            var newText = text.substring(0, startPos - 3) + newTag + text.substring(endPos);
+</div>`;
+            var newText = text.substring(0, startPos - 6) + newHTML + text.substring(endPos);
             textarea.value = newText;
           } else if (trigger === '<h1>') {
             var newText = text.substring(0, startPos) + '</h1>' + text.substring(endPos);
