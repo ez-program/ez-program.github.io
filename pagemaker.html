@@ -84,21 +84,20 @@
             const subject = document.getElementById('subjectInput').value || 'Default Subject';
             const text = document.getElementById('textInput').value || 'Default Text';
 
-            
             const htmlContent = `
                 <!DOCTYPE html>
                 <html>
                 <head>
                     <title>${title}</title>
                     <style>
-                        p {{
-            Color: Blue;
-            font-family: ""Comic Sans MS"", cursive;
-            text-align: center;
-               }}
-        h1 {{
-            Color: Red;
-               }}
+                        p {
+                            color: blue;
+                            font-family: "Comic Sans MS", cursive;
+                            text-align: center;
+                        }
+                        h1 {
+                            color: red;
+                        }
                     </style>
                 </head>
                 <body>
@@ -108,8 +107,16 @@
                 </html>
             `;
 
-            
-            document.getElementById('generatedContent').innerHTML = htmlContent;
+            // Create a Blob with the HTML content
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+
+            // Create a download link
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'generated_page.html'; // Name of the downloaded file
+
+            // Simulate a click on the download link
+            downloadLink.click();
         }
     </script>
 </body>
