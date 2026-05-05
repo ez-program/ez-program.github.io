@@ -1,45 +1,117 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-h1{
-    color: blue;
-    font-family: "Comic Sans MS", cursive;
-    text-align: center;
-}
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    background-color: #007bff;
-    color: #ffffff;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
+<!DOCTYPE html>
+<html lang="en"><head>
 
-.btn:hover {
-    background-color: #0056b3;
-};
-</style>
-    <title>landing</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yippie — Developer</title>
+  
+<style id="zaemit-motion-keyframes">
+@keyframes zaemit-fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes zaemit-slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes zaemit-slideDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes zaemit-slideLeft { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes zaemit-slideRight { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes zaemit-scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes zaemit-bounceIn { 0% { opacity: 0; transform: scale(0.3); } 50% { opacity: 1; transform: scale(1.05); } 70% { transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes zaemit-fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes zaemit-slideOutUp { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-40px); } }
+@keyframes zaemit-slideOutDown { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(40px); } }
+@keyframes zaemit-slideOutLeft { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(-40px); } }
+@keyframes zaemit-slideOutRight { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(40px); } }
+@keyframes zaemit-scaleOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.8); } }
+@keyframes zaemit-bounceOut { 0% { opacity: 1; transform: scale(1); } 25% { transform: scale(1.05); } 100% { opacity: 0; transform: scale(0.3); } }
+</style><link rel="stylesheet" href="style.css"></head>
 <body>
-    <h1> choose a tutorial</h1>
-    <a href="cs.html">
-        <button>C#</button>
-      </a>
-      <a href="py.html">
-        <button>python</button>
-      </a>
-      <p></p>
 
-      <h1>or use those other things</h1>
-      <a href="ezcoder.html" class="btn">html coder</a> 
-      <a href="pagemaker.html" class="btn">auto page maker</a> 
+  <header class="nav">
+    <div class="logo">Yippie</div>
+    <nav>
+      <a href="#work" class="">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#payment">Payment</a>
+    </nav>
+  </header>
 
-</body>
-</html>
+  <main class="">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-content" style="">
+        <h1 class="zaemit-force-visible" style="animation: 0.5s ease 0s 1 normal both running zaemit-fadeIn;">Building clean, fast, thoughtful web experiences.</h1>
+        <p class="zaemit-force-visible" style="animation: 0.5s ease 0s 1 normal both running zaemit-slideRight;">I design and develop websites that feel good to use.</p>
+        <a class="btn zaemit-force-visible" href="#work" style="animation: 0.5s ease 0s 1 normal both running zaemit-scaleIn;">See my work</a>
+      </div>
+
+      
+      <div class="hero-media" style="">
+        <img src="imgs/svg.svg" class="">
+        <br>
+        <video autoplay="" muted="" loop="" playsinline="" class="hero-video">
+          <source src="animations/lines.webm" type="video/webm">
+        </video>
+      </div>
+
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section" style="">
+      <h2 class="">Projects</h2>
+
+      <div class="card div-6kzowj" style="">
+        <div>
+          <h3 class="h3-wvfya5" style="">Browsecade</h3>
+          <p class="editor-editable" style="">Browsecade is my own site that was a small project to practice my javascript</p>
+        </div>
+        <a class="btn a-m5njyw" href="https://browsecade.site" target="_blank" rel="noopener noreferrer" style="">Visit Site</a>
+        
+      </div>
+
+      <div class="card">
+        <h3 class="">This Site</h3>
+        <p class="">This is the site you're currently viewing!</p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+<section id="about" class="section" style="">
+  <h2 class="">About</h2>
+  <p class="">
+    I’m a developer focused on building fast, clean, and accessible user interfaces with a strong attention to detail and usability. 
+    I enjoy turning complex problems into simple, intuitive, and responsive digital experiences that work well across different devices and platforms.
+  </p>
+  <p class="">
+    My work spans both frontend and backend development, giving me a solid understanding of how full-stack systems come together. 
+    I have experience working with modern web technologies, APIs, and database-driven applications, and I’m always looking to improve performance, scalability, and code quality.
+  </p>
+  <p class="">
+    I value clean architecture, maintainable code, and thoughtful design decisions. I am comfortable working in any environment, whether independently or as part of a team, and I adapt quickly to new tools, workflows, and project requirements. 
+    My goal is to build reliable software that not only functions well but also delivers a smooth and enjoyable user experience.
+  </p>
+</section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" style="">
+      <h2>Contact</h2>
+      <p>discord: modify_yay</p>
+    </section>
+
+    <!-- PAYMENT -->
+    <section id="payment" class="section" style="">
+      <h2>Payment</h2>
+      <p>If you decide to buy from me, these are the possible payment methods:</p>
+      <ul>
+        <li>Crypto</li>
+        <li>PayPal</li>
+        <li>custom payment methods (just ask me first)</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© <span id="year">2026</span> Yippie</p>
+  </footer>
+
+  <script src="script.js"></script></body></html>
